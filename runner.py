@@ -133,7 +133,6 @@ if __name__ == '__main__':
     import re
     if args.executor == 'dask/casa' or 'XCACHE_HOST' in os.environ:
         for key in sample_dict.keys():
-            # sample_dict[key] = [path.replace('xrootd-cms.infn.it/', 'xcache') for path in sample_dict[key]]
             sample_dict[key] = [re.sub(r'//.*//', r'//xcache///', path) for path in sample_dict[key]]
 
     # For debugging
@@ -213,7 +212,10 @@ if __name__ == '__main__':
                                         'skipbadfiles': args.skip,
                                         'savemetrics': True,
                                         'schema': processor.NanoAODSchema,
-                                        'workers': args.workers},
+                                        'workers': args.workers,
+                                        'mergepool': 5,
+                                        'merging': True
+                                    },
                                     chunksize=args.chunk, maxchunks=args.max,
                                     #shuffle=True,
                                     )
@@ -433,7 +435,7 @@ if __name__ == '__main__':
             )
         
         if args.executor == 'dask/casa':
-            client = Client("tls://localhost:8786")
+            client = Client("tcp://localhost:8786")
             # client = Client("tls://andrzej-2enovak-40cern-2ech.dask.coffea.casa:8786")
 #             import shutil
 #             shutil.make_archive("workflows", "zip", base_dir="workflows")
@@ -487,4 +489,3 @@ if __name__ == '__main__':
     if 'metrics' in locals():
         with open(f"metrics_{args.output.split('.')[0]}.json", 'w') as metrics_out:
             json.dump(metrics, metrics_out, indent=4)
-
