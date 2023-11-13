@@ -21,24 +21,10 @@ Create a VOMS proxy to get access to the data:
 ```bash
 # voms-proxy-init -voms cms:/cms/Role=production -valid 192:00
 ```
-
-
-### Test run
-Use `--executor iterative` for single process to debug, `--executor futures` for local multiprocessing.
-
+## Test scale out
+Assuming you have read access to the relevant EOS dataset, you can test that everyting runs fine by doing
 ```bash
-python runner.py --id test17 --json metadata/v2x17.json --year 2017 --limit 1 --chunk 5000 --max 2 --executor futures -j 5 
+python runner.py --id test17 --json metadata/v2x17_cern-xrootd.json --year 2017 --limit 1 --chunk 5000 --max 2 --executor futures -j 5 
 ```
-
-### Test scale out
-Scale-out will be dependent on the cluster setup. If the cluster is sufficiently permissive the below might run right away, otherwise some editing of `runner.py` and `HighThroughputExecutor` when using `--executor parsl` will be necessary. Analogously for `--executor dask`
-
-```bash
-python runner.py --id test17 --json metadata/v2x17.json --year 2017 --limit 1 --chunk 5000 --max 2 --executor parsl
-```
-
-### Full scale
-Removing test limiters...
-```bash
-python runner.py --id test17 --json metadata/v2x17.json --year 2017 --executor parsl
-```
+## Use at a different site
+The file `metadata/v2x17_cern-xrootd.json` contains the list of files to be read. If you want to use the script at another site, you need to copy them to the desired storage element and location and create a new JSON file for the new file list.
