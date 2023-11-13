@@ -41,7 +41,7 @@ The simplest way to do that is by doing
 ```
 ./run_nano.sh -a cern-xrootd -w <workers>
 ```
-where `<cores>` is the desired number of workers.
+where `<workers>` is the desired number of workers.
 The script should be studied and modified if needed; for example the original version clears the OS page cache before the execution, as to avoid data to be read from memory rather than from disk.
 
 ## Collecting statistics
