@@ -12,7 +12,7 @@ git clone https://github.com/sciaba/nanocc.git
 cd nanocc
 
 # initiate proxy e.g
-# voms-proxy-init --voms cms:/cms/dcms --valid 168:00  --vomses ~/.grid-security/vomses/
+# voms-proxy-init -voms cms:/cms/Role=production -valid 192:00
 ```
 
 
