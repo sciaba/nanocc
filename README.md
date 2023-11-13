@@ -8,7 +8,7 @@ pip install -e .
 cd ..
 
 # get runner code
-git clone git@github.com:andrzejnovak/nanocc.git
+git clone https://github.com/andrzejnovak/boostedhiggs.git
 cd nanocc
 
 # initiate proxy e.g
