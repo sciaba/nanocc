@@ -20,6 +20,7 @@ rxmbytes=$(grep -A 18 Max ${logdir}/prmon.json | awk '/rx_bytes/ {sub(/,/, "", $
 rxgbytes=$(grep -A 18 Max ${logdir}/prmon.json | awk '/rx_bytes/ {sub(/,/, "", $2); print ($2 / 1024 ** 3)}')
 totexetime=$(sed -n -E 's/.*processtime.* ([0-9.]*).*/\1/p' ${logdir}/nanocc.out)
 d=$(sed -n -E 's/.*bytesread.* ([0-9.]*).*/\1/p' ${logdir}/nanocc.out)
+entries=$(sed -n -E 's/.*entries.* ([0-9.]*).*/\1/p' ${logdir}/nanocc.out)
 exetime=$(awk "BEGIN {print($totexetime / $workers)}")
 rrate=$(awk "BEGIN {print($rmbytes / $wtime)}")
 rxrate=$(awk "BEGIN {print($rxmbytes / $wtime)}")
@@ -41,3 +42,4 @@ echo "Execution time: $exetime sec"
 #echo "Throughput per worker: $throughput kHz"
 echo "Amount of data: $data GiB"
 echo "Data rate: $datarate MiB/sec"
+echo "Entries: $entries"
