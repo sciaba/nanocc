@@ -1,7 +1,6 @@
 awkward==1.10.2
 awkward0==0.15.5
 boost-histogram==1.3.2
--e git+https://github.com/andrzejnovak/boostedhiggs.git@32378b3b66d7e489e7343bc01ad45b446da36288#egg=boostedhiggs
 cachetools==5.3.0
 certifi==2022.12.7
 click==8.1.3
@@ -62,6 +61,5 @@ uproot==4.3.7
 uproot3==3.14.4
 uproot3-methods==0.10.1
 urllib3==1.26.15
-xrootd @ file:///home/conda/feedstock_root/build_artifacts/xrootd_1676745550582/work/build-dir/bindings/python
 zict==2.2.0
 zipp==3.15.0
