@@ -1,6 +1,11 @@
 ## Acknowledgements
 This code has been written by Andrzej Novak and the customisations in this repository are only meant to easily run it as an I/O benchmark.
 
+## Prerequisites
+Install PrMon as explained here:
+
+https://github.com/HSF/prmon
+
 ## Installation
 Create and activate a dedicated conda environment with the needed dependencies:
 
@@ -37,4 +42,11 @@ The simplest way to do that is by doing
 ./run_nano.sh -a cern-xrootd -w <workers>
 ```
 where `<cores>` is the desired number of workers.
+The script should be studied and modified if needed; for example the original version clears the OS page cache before the execution, as to avoid data to be read from memory rather than from disk.
+
+## Collecting statistics
+The script `metrics.sh` parses the output of the desired run and prints some metrics in a human readable way. The script `metrics_csv.sh` does the same thing but needs at least two runs with the same parameters to estimate the errors on the metrics.
+
+For help write to <Andrea.Sciaba@cern.ch>.
+
 
