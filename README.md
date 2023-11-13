@@ -1,17 +1,21 @@
-Best to run in a clean conda env
+## Installation
+Create and activate a dedicated conda environment with the needed dependencies:
 
 ```bash
+conda create --name tmp_andrzej_analysis python=3.9.16
+conda activate tmp_andrzej_analysis
+conda install -c conda-forge xrootd
+pip install -r requirements.txt
 # get analysis code and install as package
 git clone git@github.com:andrzejnovak/boostedhiggs.git
 cd boostedhiggs
 pip install -e . 
 cd ..
+```
 
-# get runner code
-git clone https://github.com/sciaba/nanocc.git
-cd nanocc
+Create a VOMS proxy to get access to the data:
 
-# initiate proxy e.g
+```bash
 # voms-proxy-init -voms cms:/cms/Role=production -valid 192:00
 ```
 
