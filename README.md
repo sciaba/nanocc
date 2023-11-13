@@ -1,9 +1,12 @@
+## Acknowledgements
+This code has been written by Andrzej Novak and the customisations in this repository are only meant to easily run it as an I/O benchmark.
+
 ## Installation
 Create and activate a dedicated conda environment with the needed dependencies:
 
 ```bash
-conda create --name tmp_andrzej_analysis python=3.9.16
-conda activate tmp_andrzej_analysis
+conda create --name cms_coffea_analysis python=3.9.16
+conda activate cms_coffea_analysis
 conda install -c conda-forge xrootd
 pip install -r requirements.txt
 # get analysis code and install as package
