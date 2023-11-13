@@ -28,3 +28,13 @@ python runner.py --id test17 --json metadata/v2x17_cern-xrootd.json --year 2017 
 ```
 ## Use at a different site
 The file `metadata/v2x17_cern-xrootd.json` contains the list of files to be read. If you want to use the script at another site, you need to copy them to the desired storage element and location and create a new JSON file for the new file list.
+
+## Use for benchmarking
+The script `run_nano.sh` can be used to execute the workload while recording some relevant performance metrics, collected by PrMon.
+The simplest way to do that is by doing
+
+```
+./run_nano.sh -a cern-xrootd -w <workers>
+```
+where `<cores>` is the desired number of workers.
+
